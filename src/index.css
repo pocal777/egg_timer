@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+@theme {
+  --animate-open: open 1s ease-in-out;
+  --animate-bounce: bounce 1s ease-in-out infinite;
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(-5%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  @keyframes open {
+    0% {
+      opacity: 0;
+      transform: scale(25%) translateY(100%);
+    }
+    25% {
+      opacity: 100;
+      transform: scale(100%);
+    }
+  }
+}
