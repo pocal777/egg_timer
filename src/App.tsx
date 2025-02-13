@@ -2,16 +2,26 @@ import { AiFillApple, AiOutlineSearch, AiOutlineWifi } from 'react-icons/ai';
 
 import EggTimer from '~/egg_timer';
 
-function getMacOsDateTime() {
+function getPolandDateTime() {
   const currentDate = new Date();
-  const weekday = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
-  const month = currentDate.toLocaleDateString('en-US', { month: 'short' });
-  const day = currentDate.getDate();
+  const weekday = currentDate.toLocaleDateString('en-US', {
+    weekday: 'short',
+    timeZone: 'Europe/Warsaw',
+  });
+  const month = currentDate.toLocaleDateString('en-US', {
+    month: 'short',
+    timeZone: 'Europe/Warsaw',
+  });
+  const day = currentDate.toLocaleDateString('en-US', {
+    day: 'numeric',
+    timeZone: 'Europe/Warsaw',
+  });
   const time = currentDate
     .toLocaleTimeString('en-US', {
       hour: 'numeric',
       minute: '2-digit',
       hour12: true,
+      timeZone: 'Europe/Warsaw',
     })
     .toUpperCase();
 
@@ -19,7 +29,7 @@ function getMacOsDateTime() {
 }
 
 export default function App() {
-  const dateTime = getMacOsDateTime();
+  const dateTime = getPolandDateTime();
 
   return (
     <div className="w-full h-screen flex flex-col antialiased text-sm text-black tracking-tight bg-[url('/bg.jpeg')] bg-cover bg-center">
