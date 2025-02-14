@@ -56,7 +56,13 @@ export default function EggTimer() {
               <button
                 type="button"
                 className="size-3 rounded-full bg-red-500 hover:cursor-pointer"
-                onClick={() => setShow(false)}
+                onClick={() => {
+                  setShow(false);
+                  stopAlarm();
+                  clearInterval(timeRef.current!);
+                  setStart(false);
+                  setTime(option.time);
+                }}
               />
               <button
                 type="button"
@@ -87,13 +93,15 @@ export default function EggTimer() {
                             : 'opacity-70 hover:cursor-pointer group'
                         }`}
                         onClick={() => {
-                          stopAlarm();
-                          if (timeRef.current) {
-                            clearInterval(timeRef.current);
+                          if (option.label !== label) {
+                            stopAlarm();
+                            if (timeRef.current) {
+                              clearInterval(timeRef.current);
+                            }
+                            setOption({ picture, label, time });
+                            setTime(time);
+                            setStart(false);
                           }
-                          setOption({ picture, label, time });
-                          setTime(time);
-                          setStart(false);
                         }}
                       >
                         <img
